@@ -11,7 +11,7 @@ object NetworkManager {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    var getCharacters = retrofit.create(CharactersInterface::class.java)
-    var getEpisodes = retrofit.create(EpisodesInterface::class.java)
-    var getLocations = retrofit.create(LocationsInterface::class.java)
+    var getCharacters: CharactersInterface = retrofit.create(CharactersInterface::class.java)
+    var getEpisodes: EpisodesInterface = retrofit.create(EpisodesInterface::class.java)
+    var getLocations: LocationsInterface = retrofit.create(LocationsInterface::class.java)
 }

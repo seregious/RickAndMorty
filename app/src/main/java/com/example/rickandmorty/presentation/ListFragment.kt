@@ -1,23 +1,18 @@
 package com.example.rickandmorty.presentation
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.rickandmorty.R
-import com.example.rickandmorty.data.NetworkManager
+import com.example.rickandmorty.data.Constants
 import com.example.rickandmorty.databinding.FragmentListBinding
-import com.example.rickandmorty.domain.Character
 import com.example.rickandmorty.presentation.adapters.CharactersAdapter
 import com.example.rickandmorty.presentation.adapters.EpisodesAdapter
 import com.example.rickandmorty.presentation.adapters.LocationsAdapter
-import kotlinx.coroutines.launch
 
 
 class ListFragment : Fragment() {
@@ -41,14 +36,24 @@ class ListFragment : Fragment() {
         setupSearchButton()
         binding.backButton.setOnClickListener {
             backToMenuFragment()
+            (activity as AppCompatActivity).supportActionBar?.title = Constants.MAIN_TITLE
         }
     }
 
     private fun setupAdapter() {
         when(viewModel.screen.value) {
-            1 -> {setupCharactersAdapter() }
-            2 -> {setupLocationsAdapter() }
-            else -> {setupEpisodesAdapter() }
+            1 -> {
+                setupCharactersAdapter()
+                (activity as AppCompatActivity).supportActionBar?.title = Constants.CHAR_TITLE
+            }
+            2 -> {
+                setupLocationsAdapter()
+                (activity as AppCompatActivity).supportActionBar?.title = Constants.LOC_TITLE
+            }
+            else -> {
+                setupEpisodesAdapter()
+                (activity as AppCompatActivity).supportActionBar?.title = Constants.EPI_TITLE
+            }
         }
     }
 
@@ -84,15 +89,12 @@ class ListFragment : Fragment() {
         parentFragmentManager.beginTransaction().replace(R.id.mainFrame, MenuFragment()).commit()
     }
 
-    private fun setupSearchButton() =with(binding){
+    private fun setupSearchButton() = with(binding) {
         searchButton.setOnClickListener {
             val text = searchText.text.toString()
-            viewModel.sortChar(text)
+            val itemSearch =
+                viewModel.characterList.value?.filter { it.name.uppercase().contains(text.uppercase()) }
+            charactersAdapter.characterList = itemSearch ?: emptyList()
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = ListFragment()
     }
 }

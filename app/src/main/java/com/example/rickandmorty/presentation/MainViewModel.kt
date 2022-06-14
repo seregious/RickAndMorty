@@ -1,12 +1,11 @@
 package com.example.rickandmorty.presentation
 
-import android.app.Application
 import androidx.lifecycle.*
 import com.example.rickandmorty.data.NetworkManager
 import com.example.rickandmorty.domain.*
 import kotlinx.coroutines.launch
 
-class MainViewModel(): ViewModel() {
+class MainViewModel: ViewModel() {
 
     val screen: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
@@ -16,11 +15,8 @@ class MainViewModel(): ViewModel() {
     var locationList = MutableLiveData<List<Location>>()
     val episodeList = MutableLiveData<List<Episode>>()
 
-    private val search = MutableLiveData<String>()
-
-
     fun getCharactersList() {
-        var list: List<Character> = arrayListOf()
+        var list: List<Character>
         viewModelScope.launch {
             list =  NetworkManager.getCharacters.getCharacters().results
                 characterList.postValue(list)
@@ -28,7 +24,7 @@ class MainViewModel(): ViewModel() {
     }
 
     fun getEpisodeList() {
-        var list: List<Episode> = arrayListOf()
+        var list: List<Episode>
         viewModelScope.launch {
             list =  NetworkManager.getEpisodes.getEpisodes().results
             episodeList.postValue(list)
@@ -36,7 +32,7 @@ class MainViewModel(): ViewModel() {
     }
 
     fun getLocationList()  {
-        var list: List<Location> = arrayListOf()
+        var list: List<Location>
         viewModelScope.launch {
             list =  NetworkManager.getLocations.getLocations().results
             locationList.postValue(list)

@@ -11,17 +11,14 @@ import com.example.rickandmorty.databinding.FragmentMenuBinding
 
 
 class MenuFragment : Fragment() {
-    lateinit var binding: FragmentMenuBinding
+    private lateinit var binding: FragmentMenuBinding
     private val viewModel: MainViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMenuBinding.inflate(inflater)
         return binding.root
     }
@@ -56,12 +53,5 @@ class MenuFragment : Fragment() {
 
     private fun setupFragment() {
         parentFragmentManager.beginTransaction().replace(R.id.mainFrame, ListFragment()).commit()
-    }
-
-
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = MenuFragment()
     }
 }

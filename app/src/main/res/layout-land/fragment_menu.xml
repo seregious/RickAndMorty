@@ -24,8 +24,8 @@
             android:id="@+id/charactersButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@drawable/button_color"
             android:text="@string/characters_button"
+            android:backgroundTint="@drawable/button_color"
             android:textColorHint="@color/teal_200"
             app:cornerRadius="0dp" />
 
@@ -33,8 +33,8 @@
             android:id="@+id/locationsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@drawable/button_color"
             android:text="@string/locations_button"
+            android:backgroundTint="@drawable/button_color"
             android:textColorHint="@color/teal_200"
             app:cornerRadius="0dp" />
 
@@ -42,9 +42,9 @@
             android:id="@+id/episodesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/episodes_button"
             android:backgroundTint="@drawable/button_color"
             android:textColorHint="@color/teal_200"
-            android:text="@string/episodes_button"
             app:cornerRadius="0dp" />
 
     </LinearLayout>
