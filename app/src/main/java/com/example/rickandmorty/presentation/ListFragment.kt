@@ -1,10 +1,13 @@
 package com.example.rickandmorty.presentation
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.rickandmorty.R
@@ -35,7 +38,7 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupAdapter()
-
+        setupSearchButton()
         binding.backButton.setOnClickListener {
             backToMenuFragment()
         }
@@ -43,15 +46,9 @@ class ListFragment : Fragment() {
 
     private fun setupAdapter() {
         when(viewModel.screen.value) {
-            1 -> {
-                setupCharactersAdapter()
-            }
-            2 -> {
-                setupLocationsAdapter()
-            }
-            else -> {
-                setupEpisodesAdapter()
-            }
+            1 -> {setupCharactersAdapter() }
+            2 -> {setupLocationsAdapter() }
+            else -> {setupEpisodesAdapter() }
         }
     }
 
@@ -85,6 +82,13 @@ class ListFragment : Fragment() {
 
     private fun backToMenuFragment() {
         parentFragmentManager.beginTransaction().replace(R.id.mainFrame, MenuFragment()).commit()
+    }
+
+    private fun setupSearchButton() =with(binding){
+        searchButton.setOnClickListener {
+            val text = searchText.text.toString()
+            viewModel.sortChar(text)
+        }
     }
 
     companion object {
