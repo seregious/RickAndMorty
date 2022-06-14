@@ -4,37 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#009688"
-    tools:context=".activities.MainMenuActivity">
+    tools:context=".presentation.MenuFragment">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/mainFrame"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="vertical"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/charactersButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/characters_button" />
-
-        <Button
-            android:id="@+id/locationsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/locations_button" />
-
-        <Button
-            android:id="@+id/episodesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/episodes_button" />
-    </LinearLayout>
-
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

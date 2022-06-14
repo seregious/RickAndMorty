@@ -3,4 +3,20 @@
     <string name="characters_button">Characters</string>
     <string name="locations_button">Locations</string>
     <string name="episodes_button">Episodes</string>
+    <string name="backButton">&lt; Back</string>
+    <string name="searchButton">Search</string>
+    <string name="searchText">Enter text</string>
+
+    <string name="genderText">Gender:</string>
+    <string name="speciesText">Species:</string>
+    <string name="locationText">Location:</string>
+
+    <string name="typeText">Type:</string>
+    <string name="dimensionText">Dimension:</string>
+
+    <string name="airDateText">Air date:</string>
+    <string name="seasonText">Season:</string>
+    <string name="episodeText">Episode:</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
