@@ -6,10 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rickandmorty.data.NetworkManager
-import com.example.rickandmorty.domain.Character
-import com.example.rickandmorty.domain.Episode
-import com.example.rickandmorty.domain.Location
-import com.example.rickandmorty.domain.Origin
+import com.example.rickandmorty.domain.*
 import kotlinx.coroutines.launch
 
 class MainViewModel(): ViewModel() {
@@ -18,29 +15,34 @@ class MainViewModel(): ViewModel() {
         MutableLiveData<Int>()
     }
 
+    var characterList = MutableLiveData<List<Character>>()
+    var locationList = MutableLiveData<List<Location>>()
+    val episodeList = MutableLiveData<List<Episode>>()
 
-    var charactersList = {
+
+
+    fun getCharactersList() {
         var list: List<Character> = arrayListOf()
         viewModelScope.launch {
             list =  NetworkManager.getCharacters.getCharacters().results
+            characterList.postValue(list)
         }
-        list
     }
 
-    var episodesList = {
+    fun getEpisodeList() {
         var list: List<Episode> = arrayListOf()
         viewModelScope.launch {
             list =  NetworkManager.getEpisodes.getEpisodes().results
+            episodeList.postValue(list)
         }
-        list
     }
 
-    var locationsList =  {
+    fun getLocationList()  {
         var list: List<Location> = arrayListOf()
         viewModelScope.launch {
             list =  NetworkManager.getLocations.getLocations().results
+            locationList.postValue(list)
         }
-        list
     }
 
 }

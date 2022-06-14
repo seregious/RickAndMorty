@@ -6,7 +6,7 @@ data class Characters (
 
 data class Character (
     val id: Int,
-    override val name : String,
+    val name : String,
     val status: String,
     val species: String,
     val type: String,
@@ -14,7 +14,7 @@ data class Character (
     val origin: Origin,
     val location: Location,
     val image: String
-): Item(name)
+)
 
 data class Origin (
     val name: String

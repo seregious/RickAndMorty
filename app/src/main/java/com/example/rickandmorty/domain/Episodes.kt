@@ -5,7 +5,7 @@ data class Episodes(
 )
 
 data class Episode (
-    override val name: String,
+    val name: String,
     val air_date: String,
     val episode: String
-        ): Item(name)
+        )

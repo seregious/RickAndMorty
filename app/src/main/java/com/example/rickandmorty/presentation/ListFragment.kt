@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.rickandmorty.R
 import com.example.rickandmorty.data.NetworkManager
 import com.example.rickandmorty.databinding.FragmentListBinding
+import com.example.rickandmorty.domain.Character
 import com.example.rickandmorty.presentation.adapters.CharactersAdapter
 import com.example.rickandmorty.presentation.adapters.EpisodesAdapter
 import com.example.rickandmorty.presentation.adapters.LocationsAdapter
@@ -36,7 +37,7 @@ class ListFragment : Fragment() {
         setupAdapter()
 
         binding.backButton.setOnClickListener {
-            setupMenuFragment()
+            backToMenuFragment()
         }
     }
 
@@ -55,32 +56,35 @@ class ListFragment : Fragment() {
     }
 
     private fun setupCharactersAdapter() {
+        viewModel.getCharactersList()
         charactersAdapter = CharactersAdapter()
         binding.rcFragment.adapter = charactersAdapter
-        lifecycleScope.launch{
-            charactersAdapter.characterList = NetworkManager.getCharacters.getCharacters().results
-        }
+            viewModel.characterList.observe(viewLifecycleOwner) {
+                charactersAdapter.characterList = it
+            }
+
     }
 
     private fun setupLocationsAdapter() {
+        viewModel.getLocationList()
         locationsAdapter = LocationsAdapter()
         binding.rcFragment.adapter = locationsAdapter
-        lifecycleScope.launch{
-            locationsAdapter.locationList = NetworkManager.getLocations.getLocations().results
+        viewModel.locationList.observe(viewLifecycleOwner) {
+            locationsAdapter.locationList = it
         }
     }
 
     private fun setupEpisodesAdapter() {
+        viewModel.getEpisodeList()
         episodesAdapter = EpisodesAdapter()
         binding.rcFragment.adapter = episodesAdapter
-        lifecycleScope.launch{
-            episodesAdapter.episodesList = NetworkManager.getEpisodes.getEpisodes().results
+        viewModel.episodeList.observe(viewLifecycleOwner) {
+            episodesAdapter.episodesList = it
         }
     }
 
-    private fun setupMenuFragment() {
+    private fun backToMenuFragment() {
         parentFragmentManager.beginTransaction().replace(R.id.mainFrame, MenuFragment()).commit()
-
     }
 
     companion object {
