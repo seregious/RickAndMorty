@@ -17,10 +17,10 @@
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@drawable/button_color"
             android:text="@string/backButton"
             android:textColor="@color/black"
-            android:backgroundTint="@drawable/button_color"
             android:textColorHint="@color/teal_200"
             app:cornerRadius="0dp" />
 
@@ -35,24 +35,26 @@
                 android:id="@+id/searchText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:autofillHints=""
                 android:background="@color/white"
                 android:ems="11"
                 android:hint="@string/searchText"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:textColorHint="#757575" />
 
             <Button
                 android:id="@+id/searchButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
+                android:backgroundTint="@drawable/button_color"
                 android:paddingTop="3dp"
                 android:paddingBottom="0dp"
                 android:text="@string/searchButton"
                 android:textColor="@color/black"
-                android:backgroundTint="@drawable/button_color"
                 android:textColorHint="@color/teal_200"
                 app:cornerRadius="0dp" />
         </LinearLayout>
