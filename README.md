@@ -8,5 +8,5 @@ Educational project Rick and Morty on working with Clean Architecture with Fragm
 <img src="https://github.com/seregious/RickAndMorty/blob/master/screenshots/Screenshot_1655276302.png" width="150" />
 <img src="https://github.com/seregious/RickAndMorty/blob/master/screenshots/Screenshot_1655276296.png" width="150" />
 <img src="https://github.com/seregious/RickAndMorty/blob/master/screenshots/Screenshot_1655276277.png" width="150" />
-<img src="https://github.com/seregious/RickAndMorty/blob/master/screenshots/Screenshot_1655276319.png" width="150" />
+<img src="https://github.com/seregious/RickAndMorty/blob/master/screenshots/Screenshot_1655276319.png" width="300" />
 </p>
