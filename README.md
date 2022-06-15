@@ -1,6 +1,10 @@
 # RickAndMorty
 Educational project Rick and Morty on working with Clean Architecture with Fragments, LiveData, Retrofit, Picasso
 
+Options:
+1. Search bar
+2. Landscape orientation
+
 <p float="left">
 <img src="https://github.com/seregious/RickAndMorty/blob/master/screenshots/Screenshot_1655276269.png" width="150" />
 
