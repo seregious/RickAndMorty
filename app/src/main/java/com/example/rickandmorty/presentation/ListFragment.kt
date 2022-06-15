@@ -92,9 +92,30 @@ class ListFragment : Fragment() {
     private fun setupSearchButton() = with(binding) {
         searchButton.setOnClickListener {
             val text = searchText.text.toString()
-            val itemSearch =
-                viewModel.characterList.value?.filter { it.name.uppercase().contains(text.uppercase()) }
-            charactersAdapter.characterList = itemSearch ?: emptyList()
+            when (viewModel.screen.value) {
+                1 -> {
+                    val itemSearch =
+                        viewModel.characterList.value?.filter {
+                            it.name.lowercase().contains(text.lowercase())
+                        }
+                    charactersAdapter.characterList = itemSearch ?: emptyList()
+                }
+
+                2 -> {
+                    val itemSearch =
+                        viewModel.locationList.value?.filter {
+                            it.name.lowercase().contains(text.lowercase())
+                        }
+                    locationsAdapter.locationList = itemSearch ?: emptyList()
+                }
+                3 -> {
+                    val itemSearch =
+                        viewModel.episodeList.value?.filter {
+                            it.name.lowercase().contains(text.lowercase())
+                        }
+                    episodesAdapter.episodesList = itemSearch ?: emptyList()
+                }
+            }
         }
     }
 }
