@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.rickandmorty.R
@@ -34,6 +35,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupAdapter()
         setupSearchButton()
+        networkCheck()
         binding.backButton.setOnClickListener {
             backToMenuFragment()
             (activity as AppCompatActivity).supportActionBar?.title = Constants.MAIN_TITLE
@@ -87,6 +89,18 @@ class ListFragment : Fragment() {
 
     private fun backToMenuFragment() {
         parentFragmentManager.beginTransaction().replace(R.id.mainFrame, MenuFragment()).commit()
+    }
+
+    private fun networkCheck() {
+        viewModel.networkStatus.observe(viewLifecycleOwner) {
+            if (!it) {
+                Toast.makeText(
+                    this@ListFragment.requireActivity(),
+                    Constants.NETWORK_ERROR_MESSAGE,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun setupSearchButton() = with(binding) {
